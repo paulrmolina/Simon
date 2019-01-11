@@ -28,7 +28,7 @@ namespace Simon
         /// </summary>
         public void GenerateSequence()
         {
-            int possibleColors = Enum.GetValues(typeof(GameColor)).Cast<int>().Max();
+            int possibleColors = Enum.GetValues(typeof(GameColor)).Cast<int>().Max() + 1;
 
             Random rand = new Random();
 

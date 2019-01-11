@@ -22,9 +22,17 @@ namespace Simon
         private int highestRound = 0;
         private int timeBetweenLights = 1;
         private int timeBetweenRounds = 2;
+
+        private Button[] buttonArray = null;
+
         public Simon()
         {
             InitializeComponent();
+            buttonArray = new Button[4];
+            buttonArray[(int)GameColor.Green] = greenButton;
+            buttonArray[(int)GameColor.Red] = redButton;
+            buttonArray[(int)GameColor.Yellow] = yellowButton;
+            buttonArray[(int)GameColor.Blue] = blueButton;
             ShowIntroduction();
         }
 
@@ -40,6 +48,8 @@ namespace Simon
                     HandleGameOver();
                     break;
                 case GameStatus.WON_ROUND:
+                    TurnAllLightsOff();
+                    this.Refresh();
                     Wait(timeBetweenRounds);
                     HandleNewRound();
                     break;
@@ -49,6 +59,21 @@ namespace Simon
             }
         }
 
+        /// <summary>
+        /// Disables all of the lights in the game from being able to be clicked.
+        /// </summary>
+        private void DisableAllLights()
+        {
+            foreach(Button btn in buttonArray)
+            {
+                btn.Enabled = false;
+            }
+        }
+
+        /// <summary>
+        /// Displays a sequence of colors in order.
+        /// </summary>
+        /// <param name="sequence">the sequence to display</param>
         private void DisplaySequence(Queue<GameColor> sequence)
         {
             this.sequenceIsDisplaying = true;
@@ -99,24 +124,46 @@ namespace Simon
             this.sequenceIsDisplaying = false;
         }
 
+        /// <summary>
+        /// Enables all of the lights in the game.
+        /// </summary>
+        private void EnableAllLights()
+        {
+            foreach(Button btn in buttonArray)
+            {
+                btn.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Handles what happens at the UI level when the game is over.
+        /// </summary>
         private void HandleGameOver()
         {
             MessageBox.Show(String.Format("Game over! Your highest level was: {0}", currentRound));
-            currentRound = 0;
-            
+
+            // Update the high score
             if(highestRound <= currentRound)
             {
                 highestRound = currentRound;
             }
             highScore.Text = highestRound.ToString();
-
+            
+            // Cleanup after game over
             currentRound = 0;
             gameIsPlaying = false;
             startButton.Enabled = true;
         }
 
+        /// <summary>
+        /// Handles what happens when the user proceeds to the next round.
+        /// </summary>
         private void HandleNewRound()
         {
+            // Disables All Lights
+            DisableAllLights();
+
+            // Create new round
             this.currentGame.CreateNewRound();
 
             // Graphics Update
@@ -128,18 +175,29 @@ namespace Simon
             var TIMEOUT = 1;
             var timeBetweenOnOff = DateTime.Now;
             while ((DateTime.Now - timeBetweenOnOff) < TimeSpan.FromSeconds(TIMEOUT)) ;
-            //DisplaySequence(currentGame.GetCurrentSequence());
+            
+            // Making the display sequence method run on its own thread avoids the issue of
+            // enqueuing mouseUp commands on the lights causing the game to erroneously end if
+            // the user clicks a button while displaying.
             Thread displayThread = new Thread(() => DisplaySequence(currentGame.GetCurrentSequence()));
             displayThread.Start();
 
+            // Re-Enable all lights
+            EnableAllLights();
         }
 
+        /// <summary>
+        /// Pretty introduction for the game. TODO: Finish this
+        /// </summary>
         private void ShowIntroduction()
         {
             
         }
 
         #region Light Manipulation
+        /// <summary>
+        /// Turns off all of the lights in the game.
+        /// </summary>
         private void TurnAllLightsOff()
         {
             TurnGreenLightOff();
@@ -148,40 +206,60 @@ namespace Simon
             TurnBlueLightOff();
         }
 
+        /// <summary>
+        /// Turns blue light element off.
+        /// </summary>
         private void TurnBlueLightOff()
         {
             blueButton.BackColor = Color.Navy;
 
         }
 
+        /// <summary>
+        /// Turns blue light element on.
+        /// </summary>
         private void TurnBlueLightOn()
         {
             blueButton.BackColor = Color.Blue;
         }
 
+        /// <summary>
+        /// Turns green light element off.
+        /// </summary>
         private void TurnGreenLightOff()
         {
             greenButton.BackColor = Color.DarkGreen;
-
-
         }
 
+        /// <summary>
+        /// Turns green light element on.
+        /// </summary>
         private void TurnGreenLightOn()
         {
             greenButton.BackColor = Color.Lime;
         }
 
+        /// <summary>
+        /// Turns red light element off.
+        /// </summary>
         private void TurnRedLightOff()
         {
             redButton.BackColor = Color.DarkRed;
 
 
         }
+
+        /// <summary>
+        /// Turns red light element on.
+        /// </summary>
         private void TurnRedLightOn()
         {
             redButton.BackColor = Color.Red;
         }
 
+        /// <summary>
+        /// Turns yellow light element off.
+        /// </summary>
         private void TurnYellowLightOff()
         {
             yellowButton.BackColor = Color.Olive;
@@ -189,12 +267,19 @@ namespace Simon
 
         }
 
+        /// <summary>
+        /// Turns yellow light element on.
+        /// </summary>
         private void TurnYellowLightOn()
         {
             yellowButton.BackColor = Color.Yellow;
         }
         #endregion
 
+        /// <summary>
+        /// Causes game to wait before doing something else. Used to control UI element refreshing.
+        /// </summary>
+        /// <param name="timeToWait">amount of time to wait</param>
         private void Wait(int timeToWait)
         {
             var startingTime = DateTime.Now;
