@@ -1,0 +1,2 @@
+﻿TODO:
+-Add Hover Event to allow user to avoid commiting to a color with the mouseUp event on the color selection

@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Game.cs" />
     <Compile Include="GameColor.cs" />
+    <Compile Include="GameStatus.cs" />
     <Compile Include="Round.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="Simon.cs">
@@ -82,6 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

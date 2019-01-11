@@ -8,3 +8,12 @@ C:\Users\Paul\source\repos\Simon\Simon\obj\Debug\Simon.csproj.GenerateResource.c
 C:\Users\Paul\source\repos\Simon\Simon\obj\Debug\Simon.csproj.CoreCompileInputs.cache
 C:\Users\Paul\source\repos\Simon\Simon\obj\Debug\Simon.exe
 C:\Users\Paul\source\repos\Simon\Simon\obj\Debug\Simon.pdb
+C:\Users\pmoli004\Documents\Simon\Simon\bin\Debug\Simon.exe.config
+C:\Users\pmoli004\Documents\Simon\Simon\obj\Debug\Simon.exe
+C:\Users\pmoli004\Documents\Simon\Simon\obj\Debug\Simon.pdb
+C:\Users\pmoli004\Documents\Simon\Simon\bin\Debug\Simon.exe
+C:\Users\pmoli004\Documents\Simon\Simon\bin\Debug\Simon.pdb
+C:\Users\pmoli004\Documents\Simon\Simon\obj\Debug\Simon.csprojResolveAssemblyReference.cache
+C:\Users\pmoli004\Documents\Simon\Simon\obj\Debug\Simon.Simon.resources
+C:\Users\pmoli004\Documents\Simon\Simon\obj\Debug\Simon.Properties.Resources.resources
+C:\Users\pmoli004\Documents\Simon\Simon\obj\Debug\Simon.csproj.GenerateResource.Cache

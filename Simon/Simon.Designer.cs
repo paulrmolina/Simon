@@ -35,8 +35,8 @@
             this.startButton = new System.Windows.Forms.Button();
             this.HighScoreLabel = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.HighScore = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.highScore = new System.Windows.Forms.Label();
+            this.currentScore = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // greenButton
@@ -92,6 +92,7 @@
             this.startButton.TabIndex = 4;
             this.startButton.Text = "START";
             this.startButton.UseVisualStyleBackColor = true;
+            this.startButton.Click += new System.EventHandler(this.startButton_Click);
             // 
             // HighScoreLabel
             // 
@@ -111,39 +112,39 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Current Score:";
             // 
-            // HighScore
+            // highScore
             // 
-            this.HighScore.BackColor = System.Drawing.Color.Black;
-            this.HighScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.HighScore.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HighScore.ForeColor = System.Drawing.Color.Lime;
-            this.HighScore.Location = new System.Drawing.Point(465, 503);
-            this.HighScore.Name = "HighScore";
-            this.HighScore.Size = new System.Drawing.Size(47, 26);
-            this.HighScore.TabIndex = 7;
-            this.HighScore.Text = "00";
-            this.HighScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.highScore.BackColor = System.Drawing.Color.Black;
+            this.highScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.highScore.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highScore.ForeColor = System.Drawing.Color.Lime;
+            this.highScore.Location = new System.Drawing.Point(465, 503);
+            this.highScore.Name = "highScore";
+            this.highScore.Size = new System.Drawing.Size(47, 26);
+            this.highScore.TabIndex = 7;
+            this.highScore.Text = "00";
+            this.highScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // currentScore
             // 
-            this.label2.BackColor = System.Drawing.Color.Black;
-            this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label2.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.Lime;
-            this.label2.Location = new System.Drawing.Point(465, 541);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 26);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "00";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.currentScore.BackColor = System.Drawing.Color.Black;
+            this.currentScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.currentScore.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentScore.ForeColor = System.Drawing.Color.Lime;
+            this.currentScore.Location = new System.Drawing.Point(465, 541);
+            this.currentScore.Name = "currentScore";
+            this.currentScore.Size = new System.Drawing.Size(47, 26);
+            this.currentScore.TabIndex = 8;
+            this.currentScore.Text = "00";
+            this.currentScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Simon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 594);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.HighScore);
+            this.Controls.Add(this.currentScore);
+            this.Controls.Add(this.highScore);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HighScoreLabel);
             this.Controls.Add(this.startButton);
@@ -167,8 +168,8 @@
         private System.Windows.Forms.Button startButton;
         private System.Windows.Forms.Label HighScoreLabel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label HighScore;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label highScore;
+        private System.Windows.Forms.Label currentScore;
     }
 }
 
