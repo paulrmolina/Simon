@@ -42,45 +42,53 @@
             // greenButton
             // 
             this.greenButton.BackColor = System.Drawing.Color.DarkGreen;
-            this.greenButton.Location = new System.Drawing.Point(46, 47);
+            this.greenButton.Location = new System.Drawing.Point(34, 34);
             this.greenButton.Name = "greenButton";
             this.greenButton.Size = new System.Drawing.Size(227, 220);
             this.greenButton.TabIndex = 0;
             this.greenButton.UseVisualStyleBackColor = false;
+            this.greenButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.greenButton_MouseDown);
+            this.greenButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.greenButton_MouseUp);
             // 
             // redButton
             // 
             this.redButton.BackColor = System.Drawing.Color.DarkRed;
-            this.redButton.Location = new System.Drawing.Point(317, 47);
+            this.redButton.Location = new System.Drawing.Point(285, 34);
             this.redButton.Name = "redButton";
             this.redButton.Size = new System.Drawing.Size(227, 220);
             this.redButton.TabIndex = 1;
             this.redButton.UseVisualStyleBackColor = false;
+            this.redButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.redButton_MouseDown);
+            this.redButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.redButton_MouseUp);
             // 
             // yellowButton
             // 
             this.yellowButton.BackColor = System.Drawing.Color.Olive;
-            this.yellowButton.Location = new System.Drawing.Point(46, 273);
+            this.yellowButton.Location = new System.Drawing.Point(34, 273);
             this.yellowButton.Name = "yellowButton";
             this.yellowButton.Size = new System.Drawing.Size(227, 220);
             this.yellowButton.TabIndex = 2;
             this.yellowButton.UseVisualStyleBackColor = false;
+            this.yellowButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.yellowButton_MouseDown);
+            this.yellowButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.yellowButton_MouseUp);
             // 
             // blueButton
             // 
             this.blueButton.BackColor = System.Drawing.Color.Navy;
-            this.blueButton.Location = new System.Drawing.Point(317, 273);
+            this.blueButton.Location = new System.Drawing.Point(285, 273);
             this.blueButton.Name = "blueButton";
             this.blueButton.Size = new System.Drawing.Size(227, 220);
             this.blueButton.TabIndex = 3;
             this.blueButton.UseVisualStyleBackColor = false;
+            this.blueButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.blueButton_MouseDown);
+            this.blueButton.MouseUp += new System.Windows.Forms.MouseEventHandler(this.blueButton_MouseUp);
             // 
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(74, 502);
+            this.startButton.Location = new System.Drawing.Point(62, 518);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(170, 66);
+            this.startButton.Size = new System.Drawing.Size(170, 49);
             this.startButton.TabIndex = 4;
             this.startButton.Text = "START";
             this.startButton.UseVisualStyleBackColor = true;
@@ -88,7 +96,7 @@
             // HighScoreLabel
             // 
             this.HighScoreLabel.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HighScoreLabel.Location = new System.Drawing.Point(359, 504);
+            this.HighScoreLabel.Location = new System.Drawing.Point(318, 503);
             this.HighScoreLabel.Name = "HighScoreLabel";
             this.HighScoreLabel.Size = new System.Drawing.Size(115, 26);
             this.HighScoreLabel.TabIndex = 5;
@@ -97,7 +105,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(335, 542);
+            this.label1.Location = new System.Drawing.Point(294, 541);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(139, 26);
             this.label1.TabIndex = 6;
@@ -109,7 +117,7 @@
             this.HighScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.HighScore.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.HighScore.ForeColor = System.Drawing.Color.Lime;
-            this.HighScore.Location = new System.Drawing.Point(497, 504);
+            this.HighScore.Location = new System.Drawing.Point(465, 503);
             this.HighScore.Name = "HighScore";
             this.HighScore.Size = new System.Drawing.Size(47, 26);
             this.HighScore.TabIndex = 7;
@@ -122,7 +130,7 @@
             this.label2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label2.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.Lime;
-            this.label2.Location = new System.Drawing.Point(497, 542);
+            this.label2.Location = new System.Drawing.Point(465, 541);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(47, 26);
             this.label2.TabIndex = 8;
@@ -133,7 +141,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(592, 594);
+            this.ClientSize = new System.Drawing.Size(549, 594);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.HighScore);
             this.Controls.Add(this.label1);
@@ -144,6 +152,7 @@
             this.Controls.Add(this.redButton);
             this.Controls.Add(this.greenButton);
             this.Name = "Simon";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simon";
             this.ResumeLayout(false);
 
