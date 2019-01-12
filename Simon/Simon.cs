@@ -208,7 +208,8 @@ namespace Simon
         /// </summary>
         private void ShowIntroduction()
         {
-            
+
+            TurnAllLightsOff();
         }
 
         #region Light Manipulation
@@ -221,6 +222,14 @@ namespace Simon
             TurnRedLightOff();
             TurnYellowLightOff();
             TurnBlueLightOff();
+        }
+
+        private void TurnAllLightsOn()
+        {
+            TurnGreenLightOn();
+            TurnRedLightOff();
+            TurnYellowLightOn();
+            TurnBlueLightOn();
         }
 
         /// <summary>
