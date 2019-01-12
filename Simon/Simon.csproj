@@ -70,6 +70,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -85,7 +86,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\piano-a.wav" />
+    <None Include="Resources\piano-b.wav" />
+    <None Include="Resources\piano-c.wav" />
+    <None Include="Resources\piano-d.wav" />
+    <None Include="Resources\piano-e.wav" />
+    <None Include="Resources\piano-f.wav" />
+    <None Include="Resources\piano-g.wav" />
+    <None Include="Resources\sounds_readme.txt" />
     <Content Include="TODO.txt" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -8,31 +8,48 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Media;
+using System.IO;
 
 namespace Simon
 {
     public partial class Simon : Form
     {
-        Game currentGame = null;
-        //GameStatus gameStatus = GameStatus.GAME_OVER;
-        private bool gameIsPlaying = false;
-        private bool sequenceIsDisplaying = false;
+        Game currentGame = null;                    // Holds the current playing game.
+        private bool gameIsPlaying = false;         // Determines whether a game is currently being played
+        private bool sequenceIsDisplaying = false;  // Determines if sequence is being displayed to avoid erroneous inputs
+        private int currentRound = 0;               // Holds the current round the user is playing
+        private int highestRound = 0;               // Holds high score
+        private int timeBetweenLights = 1;          // Determines the default time between lights turning on and off
+        private int timeBetweenRounds = 2;          // Determines default time between rounds
 
-        private int currentRound = 0;
-        private int highestRound = 0;
-        private int timeBetweenLights = 1;
-        private int timeBetweenRounds = 2;
+        // For Sounds
+        SoundPlayer soundPlayer = null;
+        Stream greenSound = null;
+        Stream redSound = null;
+        Stream yellowSound = null;
+        Stream blueSound = null;
 
         private Button[] buttonArray = null;
 
         public Simon()
         {
             InitializeComponent();
+
+            // Add all buttons to common array for easier handling
             buttonArray = new Button[4];
             buttonArray[(int)GameColor.Green] = greenButton;
             buttonArray[(int)GameColor.Red] = redButton;
             buttonArray[(int)GameColor.Yellow] = yellowButton;
             buttonArray[(int)GameColor.Blue] = blueButton;
+
+            // Set up sounds
+            soundPlayer = new SoundPlayer();
+            greenSound = Properties.Resources.piano_d;
+            redSound = Properties.Resources.piano_e;
+            yellowSound = Properties.Resources.piano_f;
+            blueSound = Properties.Resources.piano_g;
+
             ShowIntroduction();
         }
 
@@ -220,6 +237,13 @@ namespace Simon
         /// </summary>
         private void TurnBlueLightOn()
         {
+            // Sound
+            blueSound.Position = 0;    // rewind from previous position
+            soundPlayer.Stream = null; // clear out previous sound
+            soundPlayer.Stream = blueSound;
+            soundPlayer.Play();
+
+            // Lights
             blueButton.BackColor = Color.Blue;
         }
 
@@ -236,6 +260,12 @@ namespace Simon
         /// </summary>
         private void TurnGreenLightOn()
         {
+            // Sounds
+            greenSound.Position = 0;
+            soundPlayer.Stream = null; // clear out previous sound
+            soundPlayer.Stream = greenSound;
+            soundPlayer.Play();
+            // Lights
             greenButton.BackColor = Color.Lime;
         }
 
@@ -254,6 +284,13 @@ namespace Simon
         /// </summary>
         private void TurnRedLightOn()
         {
+            // Sound
+            redSound.Position = 0;
+            soundPlayer.Stream = null; // clear out previous sound
+            soundPlayer.Stream = redSound;
+            soundPlayer.Play();
+
+            // Lights
             redButton.BackColor = Color.Red;
         }
 
@@ -263,8 +300,6 @@ namespace Simon
         private void TurnYellowLightOff()
         {
             yellowButton.BackColor = Color.Olive;
-
-
         }
 
         /// <summary>
@@ -272,6 +307,13 @@ namespace Simon
         /// </summary>
         private void TurnYellowLightOn()
         {
+            // Sound
+            yellowSound.Position = 0;
+            soundPlayer.Stream = null; // clear out previous sound
+            soundPlayer.Stream = yellowSound;
+            soundPlayer.Play();
+
+            // Lights
             yellowButton.BackColor = Color.Yellow;
         }
         #endregion
