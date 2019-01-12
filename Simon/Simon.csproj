@@ -32,6 +32,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <Win32Resource>
+    </Win32Resource>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>simon_icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,6 +56,11 @@
     <Compile Include="Game.cs" />
     <Compile Include="GameColor.cs" />
     <Compile Include="GameStatus.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Round.cs" />
     <Compile Include="Sequence.cs" />
     <Compile Include="Simon.cs">
@@ -64,14 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -94,6 +101,11 @@
     <None Include="Resources\piano-f.wav" />
     <None Include="Resources\piano-g.wav" />
     <None Include="Resources\sounds_readme.txt" />
+    <None Include="Resources\SimonIcon.ico" />
+    <None Include="Resources\simon.ico" />
+    <None Include="Resources\simon_icon.ico" />
+    <Content Include="simon.ico" />
+    <Content Include="simon_icon.ico" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup />

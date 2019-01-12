@@ -20,8 +20,8 @@ namespace Simon
         private bool sequenceIsDisplaying = false;  // Determines if sequence is being displayed to avoid erroneous inputs
         private int currentRound = 0;               // Holds the current round the user is playing
         private int highestRound = 0;               // Holds high score
-        private int timeBetweenLights = 1;          // Determines the default time between lights turning on and off
-        private int timeBetweenRounds = 2;          // Determines default time between rounds
+        private int timeBetweenLights = 500;       // Determines the default time between light on/off in milliseconds
+        private int timeBetweenRounds = 2000;       // Determines default time between rounds in milliseconds
 
         // For Sounds
         SoundPlayer soundPlayer = null;
@@ -65,9 +65,10 @@ namespace Simon
                     HandleGameOver();
                     break;
                 case GameStatus.WON_ROUND:
-                    TurnAllLightsOff();
-                    this.Refresh();
-                    Wait(timeBetweenRounds);
+                    //TurnAllLightsOff();
+                    //this.Refresh();
+                    RefreshCurrentRoundCount();
+                    //Wait(timeBetweenRounds);
                     HandleNewRound();
                     break;
                 case GameStatus.WINNING:
@@ -137,7 +138,8 @@ namespace Simon
                 TurnAllLightsOff();
                 //this.Refresh();
             }
-
+            // Wait a second to avoid erroneous input between thread execution
+            Wait(1);
             this.sequenceIsDisplaying = false;
         }
 
@@ -186,12 +188,12 @@ namespace Simon
             // Graphics Update
             TurnAllLightsOff();
             this.Refresh();
-            currentRound += 1;
-            currentScore.Text = currentRound.ToString();
+
             // TODO: ADD THAT YOU WON THE ROUND AND WAIT A SECOND BEFORE DISPLAYING THE NEXT ONE. FOR NOW JUST WAIT
-            var TIMEOUT = 1;
-            var timeBetweenOnOff = DateTime.Now;
-            while ((DateTime.Now - timeBetweenOnOff) < TimeSpan.FromSeconds(TIMEOUT)) ;
+            ///var TIMEOUT = 1;
+            //var timeBetweenOnOff = DateTime.Now;
+            ///while ((DateTime.Now - timeBetweenOnOff) < TimeSpan.FromSeconds(TIMEOUT)) ;
+            Wait(timeBetweenRounds);
             
             // Making the display sequence method run on its own thread avoids the issue of
             // enqueuing mouseUp commands on the lights causing the game to erroneously end if
@@ -201,6 +203,12 @@ namespace Simon
 
             // Re-Enable all lights
             EnableAllLights();
+        }
+
+        private void RefreshCurrentRoundCount()
+        {
+            currentRound += 1;
+            currentScore.Text = currentRound.ToString();
         }
 
         /// <summary>
@@ -331,11 +339,13 @@ namespace Simon
         /// Causes game to wait before doing something else. Used to control UI element refreshing.
         /// </summary>
         /// <param name="timeToWait">amount of time to wait</param>
-        private void Wait(int timeToWait)
+        private void Wait(int timeToWaitInMilliseconds)
         {
             var startingTime = DateTime.Now;
 
-            while((DateTime.Now - startingTime) < TimeSpan.FromSeconds(timeToWait));
+            //while((DateTime.Now - startingTime) < TimeSpan.FromSeconds(timeToWaitInMilliseconds));
+
+            while ((DateTime.Now - startingTime) < TimeSpan.FromMilliseconds(timeToWaitInMilliseconds)) ;
         }
 
         #region Control Events

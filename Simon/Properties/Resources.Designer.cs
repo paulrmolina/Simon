@@ -124,6 +124,16 @@ namespace Simon.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon simon_icon {
+            get {
+                object obj = ResourceManager.GetObject("simon_icon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Sound pack downloaded from Freesound
         ///----------------------------------------
         ///
@@ -142,8 +152,7 @@ namespace Simon.Properties {
         ///-------------------
         ///
         ///  * 68448__pinkyfinger__Piano_G.wav
-        ///    * url: https://freesound.org/s/68448/
-        /// [rest of string was truncated]&quot;;.
+        ///    * url: https://frees [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string sounds_readme {
             get {

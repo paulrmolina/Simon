@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Simon));
             this.greenButton = new System.Windows.Forms.Button();
             this.redButton = new System.Windows.Forms.Button();
             this.yellowButton = new System.Windows.Forms.Button();
@@ -37,14 +38,17 @@
             this.label1 = new System.Windows.Forms.Label();
             this.highScore = new System.Windows.Forms.Label();
             this.currentScore = new System.Windows.Forms.Label();
+            this.buttonGroupBox = new System.Windows.Forms.GroupBox();
+            this.buttonGroupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // greenButton
             // 
             this.greenButton.BackColor = System.Drawing.Color.DarkGreen;
-            this.greenButton.Location = new System.Drawing.Point(34, 34);
+            this.greenButton.Location = new System.Drawing.Point(17, 16);
+            this.greenButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.greenButton.Name = "greenButton";
-            this.greenButton.Size = new System.Drawing.Size(227, 220);
+            this.greenButton.Size = new System.Drawing.Size(303, 271);
             this.greenButton.TabIndex = 0;
             this.greenButton.UseVisualStyleBackColor = false;
             this.greenButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.greenButton_MouseDown);
@@ -53,9 +57,10 @@
             // redButton
             // 
             this.redButton.BackColor = System.Drawing.Color.DarkRed;
-            this.redButton.Location = new System.Drawing.Point(285, 34);
+            this.redButton.Location = new System.Drawing.Point(352, 16);
+            this.redButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.redButton.Name = "redButton";
-            this.redButton.Size = new System.Drawing.Size(227, 220);
+            this.redButton.Size = new System.Drawing.Size(303, 271);
             this.redButton.TabIndex = 1;
             this.redButton.UseVisualStyleBackColor = false;
             this.redButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.redButton_MouseDown);
@@ -64,9 +69,10 @@
             // yellowButton
             // 
             this.yellowButton.BackColor = System.Drawing.Color.Olive;
-            this.yellowButton.Location = new System.Drawing.Point(34, 273);
+            this.yellowButton.Location = new System.Drawing.Point(17, 310);
+            this.yellowButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.yellowButton.Name = "yellowButton";
-            this.yellowButton.Size = new System.Drawing.Size(227, 220);
+            this.yellowButton.Size = new System.Drawing.Size(303, 271);
             this.yellowButton.TabIndex = 2;
             this.yellowButton.UseVisualStyleBackColor = false;
             this.yellowButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.yellowButton_MouseDown);
@@ -75,9 +81,10 @@
             // blueButton
             // 
             this.blueButton.BackColor = System.Drawing.Color.Navy;
-            this.blueButton.Location = new System.Drawing.Point(285, 273);
+            this.blueButton.Location = new System.Drawing.Point(352, 310);
+            this.blueButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.blueButton.Name = "blueButton";
-            this.blueButton.Size = new System.Drawing.Size(227, 220);
+            this.blueButton.Size = new System.Drawing.Size(303, 271);
             this.blueButton.TabIndex = 3;
             this.blueButton.UseVisualStyleBackColor = false;
             this.blueButton.MouseDown += new System.Windows.Forms.MouseEventHandler(this.blueButton_MouseDown);
@@ -86,9 +93,10 @@
             // startButton
             // 
             this.startButton.Font = new System.Drawing.Font("Arial Narrow", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.startButton.Location = new System.Drawing.Point(62, 518);
+            this.startButton.Location = new System.Drawing.Point(83, 638);
+            this.startButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.startButton.Name = "startButton";
-            this.startButton.Size = new System.Drawing.Size(170, 49);
+            this.startButton.Size = new System.Drawing.Size(227, 60);
             this.startButton.TabIndex = 4;
             this.startButton.Text = "START";
             this.startButton.UseVisualStyleBackColor = true;
@@ -97,18 +105,20 @@
             // HighScoreLabel
             // 
             this.HighScoreLabel.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HighScoreLabel.Location = new System.Drawing.Point(318, 503);
+            this.HighScoreLabel.Location = new System.Drawing.Point(424, 622);
+            this.HighScoreLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.HighScoreLabel.Name = "HighScoreLabel";
-            this.HighScoreLabel.Size = new System.Drawing.Size(115, 26);
+            this.HighScoreLabel.Size = new System.Drawing.Size(153, 32);
             this.HighScoreLabel.TabIndex = 5;
             this.HighScoreLabel.Text = "High Score:";
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(294, 541);
+            this.label1.Location = new System.Drawing.Point(392, 669);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(139, 26);
+            this.label1.Size = new System.Drawing.Size(185, 32);
             this.label1.TabIndex = 6;
             this.label1.Text = "Current Score:";
             // 
@@ -118,9 +128,10 @@
             this.highScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.highScore.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highScore.ForeColor = System.Drawing.Color.Lime;
-            this.highScore.Location = new System.Drawing.Point(465, 503);
+            this.highScore.Location = new System.Drawing.Point(620, 622);
+            this.highScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.highScore.Name = "highScore";
-            this.highScore.Size = new System.Drawing.Size(47, 26);
+            this.highScore.Size = new System.Drawing.Size(62, 32);
             this.highScore.TabIndex = 7;
             this.highScore.Text = "00";
             this.highScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -131,30 +142,44 @@
             this.currentScore.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.currentScore.Font = new System.Drawing.Font("Broadway", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.currentScore.ForeColor = System.Drawing.Color.Lime;
-            this.currentScore.Location = new System.Drawing.Point(465, 541);
+            this.currentScore.Location = new System.Drawing.Point(620, 669);
+            this.currentScore.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.currentScore.Name = "currentScore";
-            this.currentScore.Size = new System.Drawing.Size(47, 26);
+            this.currentScore.Size = new System.Drawing.Size(62, 32);
             this.currentScore.TabIndex = 8;
             this.currentScore.Text = "00";
             this.currentScore.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // buttonGroupBox
+            // 
+            this.buttonGroupBox.Controls.Add(this.blueButton);
+            this.buttonGroupBox.Controls.Add(this.yellowButton);
+            this.buttonGroupBox.Controls.Add(this.redButton);
+            this.buttonGroupBox.Controls.Add(this.greenButton);
+            this.buttonGroupBox.Location = new System.Drawing.Point(28, 26);
+            this.buttonGroupBox.Name = "buttonGroupBox";
+            this.buttonGroupBox.Size = new System.Drawing.Size(676, 593);
+            this.buttonGroupBox.TabIndex = 9;
+            this.buttonGroupBox.TabStop = false;
+            // 
             // Simon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 594);
+            this.ClientSize = new System.Drawing.Size(732, 731);
+            this.Controls.Add(this.buttonGroupBox);
             this.Controls.Add(this.currentScore);
             this.Controls.Add(this.highScore);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.HighScoreLabel);
             this.Controls.Add(this.startButton);
-            this.Controls.Add(this.blueButton);
-            this.Controls.Add(this.yellowButton);
-            this.Controls.Add(this.redButton);
-            this.Controls.Add(this.greenButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Simon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simon";
+            this.buttonGroupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -170,6 +195,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label highScore;
         private System.Windows.Forms.Label currentScore;
+        private System.Windows.Forms.GroupBox buttonGroupBox;
     }
 }
 

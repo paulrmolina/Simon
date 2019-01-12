@@ -26,3 +26,13 @@ C:\Users\pmoli004\Desktop\Simon\Simon\obj\Debug\Simon.csprojResolveAssemblyRefer
 C:\Users\pmoli004\Desktop\Simon\Simon\obj\Debug\Simon.Simon.resources
 C:\Users\pmoli004\Desktop\Simon\Simon\obj\Debug\Simon.Properties.Resources.resources
 C:\Users\pmoli004\Desktop\Simon\Simon\obj\Debug\Simon.csproj.GenerateResource.Cache
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\bin\Debug\Simon.exe.config
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\bin\Debug\Simon.exe
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\bin\Debug\Simon.pdb
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.Simon.resources
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.Properties.Resources.resources
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.csproj.GenerateResource.Cache
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.csproj.CoreCompileInputs.cache
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.exe
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.pdb
+C:\Users\paulr\OneDrive\Documents\Visual Studio 2017\Projects\Simon\Simon\obj\Debug\Simon.csprojResolveAssemblyReference.cache
