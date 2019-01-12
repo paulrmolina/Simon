@@ -8,28 +8,28 @@ namespace Simon
 {
     class Game
     {
-        private int currentRoundCount = 0;
-        private Round currentRound = null;
+        private int _currentRoundCount = 0;
+        private Round _currentRound = null;
 
         public Game ()
         {
-            currentRoundCount = 0;
+            _currentRoundCount = 0;
             CreateNewRound();
         }
 
         public GameStatus CheckUserInput(GameColor colorChosen)
         {
-            return currentRound.CheckUserInput(colorChosen);
+            return _currentRound.CheckUserInput(colorChosen);
         }
 
         public void CreateNewRound()
         {
-            currentRound = new Round(++currentRoundCount);
+            _currentRound = new Round(++_currentRoundCount);
         }
 
         public Queue<GameColor> GetCurrentSequence()
         {
-            return this.currentRound.GetCurrentSequence();
+            return this._currentRound.GetCurrentSequence();
         }
     }
 }

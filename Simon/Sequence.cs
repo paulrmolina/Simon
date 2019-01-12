@@ -9,8 +9,8 @@ namespace Simon
 {
     class Sequence
     {
-        private Queue<GameColor> sequence = null;
-        private int sequenceLength = 0;
+        private Queue<GameColor> _sequence = null;
+        private int _sequenceLength = 0;
 
         public Sequence()
         {
@@ -18,8 +18,8 @@ namespace Simon
 
         public Sequence(int aSequenceLength)
         {
-            this.sequenceLength = aSequenceLength;
-            sequence = new Queue<GameColor>();
+            this._sequenceLength = aSequenceLength;
+            _sequence = new Queue<GameColor>();
             GenerateSequence();
         }
 
@@ -32,9 +32,9 @@ namespace Simon
 
             Random rand = new Random();
 
-            for(int x = 0; x < this.sequenceLength; x++)
+            for(int x = 0; x < this._sequenceLength; x++)
             {
-                sequence.Enqueue((GameColor)rand.Next(possibleColors));
+                _sequence.Enqueue((GameColor)rand.Next(possibleColors));
             }
         }
 
@@ -47,7 +47,7 @@ namespace Simon
         {
             try
             {
-                GameColor colorToTestAgainst = sequence.Dequeue();
+                GameColor colorToTestAgainst = _sequence.Dequeue();
 
                 // If the user chooses the wrong color the game will be over.
                 if (chosenColor != colorToTestAgainst)
@@ -55,7 +55,7 @@ namespace Simon
                     return GameStatus.GAME_OVER;
                 }
                 // If the user has not lost the game and the count of the colors is 0, they have won the round
-                if(sequence.Count == 0)
+                if(_sequence.Count == 0)
                 {
                     return GameStatus.WON_ROUND;
                 }
@@ -79,7 +79,7 @@ namespace Simon
         /// <returns>A copy of the current sequence.</returns>
         public Queue<GameColor> GetCurrentSequence()
         {
-            return new Queue<GameColor>(this.sequence);
+            return new Queue<GameColor>(this._sequence);
         }
     }
 }
