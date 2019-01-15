@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simon
 {
-    enum GameStatus
+    public enum GameStatus
     {
         GAME_OVER,
         WON_ROUND,

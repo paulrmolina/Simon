@@ -9,25 +9,25 @@ namespace Simon
     class Round
     {
         //private int sequenceLength = 0;
-        private Sequence _roundSequence = null;
+        Sequence RoundSequence = null;
 
         public Round()
         {
-            _roundSequence = new Sequence();
+            RoundSequence = new Sequence();
         }
         public Round(int sequenceLength)
         {
-            _roundSequence = new Sequence(sequenceLength);
+            RoundSequence = new Sequence(sequenceLength);
         }
 
         public GameStatus CheckUserInput(GameColor chosenColor)
         {
-            return _roundSequence.CheckUserInput(chosenColor);
+            return RoundSequence.CheckUserInput(chosenColor);
         }
 
         public Queue<GameColor> GetCurrentSequence()
         {
-            return this._roundSequence.GetCurrentSequence();
+            return this.RoundSequence.GetCurrentSequence();
         }
     }
 }

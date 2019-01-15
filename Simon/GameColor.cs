@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Simon
 {
-    enum GameColor
+    public enum GameColor
     {
         Green, Red, Yellow, Blue
     }

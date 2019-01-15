@@ -15,40 +15,40 @@ namespace Simon
 {
     public partial class Simon : Form
     {
-        private Game _currentGame = null;                    // Holds the current playing game.
-        private bool _gameIsPlaying = false;         // Determines whether a game is currently being played
-        private bool _sequenceIsDisplaying = false;  // Determines if sequence is being displayed to avoid erroneous inputs
-        private int _currentRound = 0;               // Holds the current round the user is playing
-        private int _highestRound = 0;               // Holds high score
-        private int _timeBetweenLights = 500;       // Determines the default time between light on/off in milliseconds
-        private int _timeBetweenRounds = 2000;       // Determines default time between rounds in milliseconds
+        Game CurrentGame = null;                    // Holds the current playing game.
+        bool GameIsPlaying = false;         // Determines whether a game is currently being played
+        bool SequenceIsDisplaying = false;  // Determines if sequence is being displayed to avoid erroneous inputs
+        int CurrentRound = 0;               // Holds the current round the user is playing
+        int HighestRound = 0;               // Holds high score
+        int TimeBetweenLights = 500;       // Determines the default time between light on/off in milliseconds
+        int TimeBetweenRounds = 2000;       // Determines default time between rounds in milliseconds
 
         // For Sounds
-        private SoundPlayer _soundPlayer = null;
-        private Stream _greenSound = null;
-        private Stream _redSound = null;
-        private Stream _yellowSound = null;
-        private Stream _blueSound = null;
+        SoundPlayer SoundPlayer = null;
+        Stream GreenSound = null;
+        Stream RedSound = null;
+        Stream YellowSound = null;
+        Stream BlueSound = null;
 
-        private Button[] _buttonArray = null;
+        private Button[] ButtonArray = null;
 
         public Simon()
         {
             InitializeComponent();
 
             // Add all buttons to common array for easier handling
-            _buttonArray = new Button[4];
-            _buttonArray[(int)GameColor.Green] = greenButton;
-            _buttonArray[(int)GameColor.Red] = redButton;
-            _buttonArray[(int)GameColor.Yellow] = yellowButton;
-            _buttonArray[(int)GameColor.Blue] = blueButton;
+            ButtonArray = new Button[4];
+            ButtonArray[(int)GameColor.Green] = greenButton;
+            ButtonArray[(int)GameColor.Red] = redButton;
+            ButtonArray[(int)GameColor.Yellow] = yellowButton;
+            ButtonArray[(int)GameColor.Blue] = blueButton;
 
             // Set up sounds
-            _soundPlayer = new SoundPlayer();
-            _greenSound = Properties.Resources.piano_d;
-            _redSound = Properties.Resources.piano_e;
-            _yellowSound = Properties.Resources.piano_f;
-            _blueSound = Properties.Resources.piano_g;
+            SoundPlayer = new SoundPlayer();
+            GreenSound = Properties.Resources.piano_d;
+            RedSound = Properties.Resources.piano_e;
+            YellowSound = Properties.Resources.piano_f;
+            BlueSound = Properties.Resources.piano_g;
 
             ShowIntroduction();
         }
@@ -67,8 +67,8 @@ namespace Simon
                 case GameStatus.WON_ROUND:
                     //TurnAllLightsOff();
                     //this.Refresh();
-                    Refresh_currentRoundCount();
-                    //Wait(_timeBetweenRounds);
+                    RefreshCurrentRoundCount();
+                    //Wait(TimeBetweenRounds);
                     HandleNewRound();
                     break;
                 case GameStatus.WINNING:
@@ -82,7 +82,7 @@ namespace Simon
         /// </summary>
         private void DisableAllLights()
         {
-            foreach(Button btn in _buttonArray)
+            foreach (Button btn in ButtonArray)
             {
                 btn.Enabled = false;
             }
@@ -94,38 +94,38 @@ namespace Simon
         /// <param name="sequence">the sequence to display</param>
         private void DisplaySequence(Queue<GameColor> sequence)
         {
-            this._sequenceIsDisplaying = true;
+            this.SequenceIsDisplaying = true;
             GameColor temp;
             while (sequence.Count != 0)
             {
                 temp = sequence.Dequeue();
-                
+
 
                 switch (temp)
                 {
                     case GameColor.Green:
                         TurnGreenLightOn();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         TurnGreenLightOff();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         break;
                     case GameColor.Red:
                         TurnRedLightOn();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         TurnRedLightOff();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         break;
                     case GameColor.Yellow:
                         TurnYellowLightOn();
-                        Wait(_timeBetweenLights);;
+                        Wait(TimeBetweenLights); ;
                         TurnYellowLightOff();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         break;
                     case GameColor.Blue:
                         TurnBlueLightOn();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         TurnBlueLightOff();
-                        Wait(_timeBetweenLights);
+                        Wait(TimeBetweenLights);
                         break;
                     default:
                         TurnGreenLightOff();
@@ -140,7 +140,7 @@ namespace Simon
             }
             // Wait a second to avoid erroneous input between thread execution
             Wait(1);
-            this._sequenceIsDisplaying = false;
+            this.SequenceIsDisplaying = false;
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Simon
         /// </summary>
         private void EnableAllLights()
         {
-            foreach(Button btn in _buttonArray)
+            foreach (Button btn in ButtonArray)
             {
                 btn.Enabled = true;
             }
@@ -159,18 +159,18 @@ namespace Simon
         /// </summary>
         private void HandleGameOver()
         {
-            MessageBox.Show(String.Format("Game over! Your highest level was: {0}", _currentRound));
+            MessageBox.Show(String.Format("Game over! Your highest level was: {0}", CurrentRound));
 
             // Update the high score
-            if(_highestRound <= _currentRound)
+            if (HighestRound <= CurrentRound)
             {
-                _highestRound = _currentRound;
+                HighestRound = CurrentRound;
             }
-            highScore.Text = _highestRound.ToString();
-            
+            highScore.Text = HighestRound.ToString();
+
             // Cleanup after game over
-            _currentRound = 0;
-            _gameIsPlaying = false;
+            CurrentRound = 0;
+            GameIsPlaying = false;
             startButton.Enabled = true;
         }
 
@@ -183,7 +183,7 @@ namespace Simon
             DisableAllLights();
 
             // Create new round
-            this._currentGame.CreateNewRound();
+            this.CurrentGame.CreateNewRound();
 
             // Graphics Update
             TurnAllLightsOff();
@@ -193,22 +193,22 @@ namespace Simon
             ///var TIMEOUT = 1;
             //var timeBetweenOnOff = DateTime.Now;
             ///while ((DateTime.Now - timeBetweenOnOff) < TimeSpan.FromSeconds(TIMEOUT)) ;
-            Wait(_timeBetweenRounds);
-            
+            Wait(TimeBetweenRounds);
+
             // Making the display sequence method run on its own thread avoids the issue of
             // enqueuing mouseUp commands on the lights causing the game to erroneously end if
             // the user clicks a button while displaying.
-            Thread displayThread = new Thread(() => DisplaySequence(_currentGame.GetCurrentSequence()));
+            Thread displayThread = new Thread(() => DisplaySequence(CurrentGame.GetCurrentSequence()));
             displayThread.Start();
 
             // Re-Enable all lights
             EnableAllLights();
         }
 
-        private void Refresh_currentRoundCount()
+        private void RefreshCurrentRoundCount()
         {
-            _currentRound += 1;
-            currentScore.Text = _currentRound.ToString();
+            CurrentRound += 1;
+            currentScore.Text = CurrentRound.ToString();
         }
 
         /// <summary>
@@ -255,10 +255,10 @@ namespace Simon
         private void TurnBlueLightOn()
         {
             // Sound
-            _blueSound.Position = 0;    // rewind from previous position
-            _soundPlayer.Stream = null; // clear out previous sound
-            _soundPlayer.Stream = _blueSound;
-            _soundPlayer.Play();
+            BlueSound.Position = 0;    // rewind from previous position
+            SoundPlayer.Stream = null; // clear out previous sound
+            SoundPlayer.Stream = BlueSound;
+            SoundPlayer.Play();
 
             // Lights
             blueButton.BackColor = Color.Blue;
@@ -278,10 +278,10 @@ namespace Simon
         private void TurnGreenLightOn()
         {
             // Sounds
-            _greenSound.Position = 0;
-            _soundPlayer.Stream = null; // clear out previous sound
-            _soundPlayer.Stream = _greenSound;
-            _soundPlayer.Play();
+            GreenSound.Position = 0;
+            SoundPlayer.Stream = null; // clear out previous sound
+            SoundPlayer.Stream = GreenSound;
+            SoundPlayer.Play();
             // Lights
             greenButton.BackColor = Color.Lime;
         }
@@ -302,10 +302,10 @@ namespace Simon
         private void TurnRedLightOn()
         {
             // Sound
-            _redSound.Position = 0;
-            _soundPlayer.Stream = null; // clear out previous sound
-            _soundPlayer.Stream = _redSound;
-            _soundPlayer.Play();
+            RedSound.Position = 0;
+            SoundPlayer.Stream = null; // clear out previous sound
+            SoundPlayer.Stream = RedSound;
+            SoundPlayer.Play();
 
             // Lights
             redButton.BackColor = Color.Red;
@@ -325,10 +325,10 @@ namespace Simon
         private void TurnYellowLightOn()
         {
             // Sound
-            _yellowSound.Position = 0;
-            _soundPlayer.Stream = null; // clear out previous sound
-            _soundPlayer.Stream = _yellowSound;
-            _soundPlayer.Play();
+            YellowSound.Position = 0;
+            SoundPlayer.Stream = null; // clear out previous sound
+            SoundPlayer.Stream = YellowSound;
+            SoundPlayer.Play();
 
             // Lights
             yellowButton.BackColor = Color.Yellow;
@@ -351,7 +351,7 @@ namespace Simon
         #region Control Events
         private void greenButton_MouseDown(object sender, MouseEventArgs e)
         {
-            if (_sequenceIsDisplaying)
+            if (SequenceIsDisplaying)
             {
                 // do nothing
             }
@@ -365,14 +365,14 @@ namespace Simon
         private void greenButton_MouseUp(object sender, MouseEventArgs e)
         {
 
-            if(!_sequenceIsDisplaying)
+            if (!SequenceIsDisplaying)
             {
                 TurnGreenLightOff();
 
                 // If the game is playing, green input will be tested against current sequence
-                if (_gameIsPlaying)
+                if (GameIsPlaying)
                 {
-                    CheckGameStatus(_currentGame.CheckUserInput(GameColor.Green));
+                    CheckGameStatus(CurrentGame.CheckUserInput(GameColor.Green));
                 }
             }
             else
@@ -385,7 +385,7 @@ namespace Simon
 
         private void redButton_MouseDown(object sender, MouseEventArgs e)
         {
-            if (_sequenceIsDisplaying)
+            if (SequenceIsDisplaying)
             {
                 // do nothing
             }
@@ -398,14 +398,14 @@ namespace Simon
 
         private void redButton_MouseUp(object sender, MouseEventArgs e)
         {
-            if(!_sequenceIsDisplaying)
+            if (!SequenceIsDisplaying)
             {
                 TurnRedLightOff();
 
                 // If the game is playing, red input will be tested against current sequence
-                if (_gameIsPlaying)
+                if (GameIsPlaying)
                 {
-                    CheckGameStatus(_currentGame.CheckUserInput(GameColor.Red));
+                    CheckGameStatus(CurrentGame.CheckUserInput(GameColor.Red));
                 }
             }
             else
@@ -417,7 +417,7 @@ namespace Simon
 
         private void yellowButton_MouseDown(object sender, MouseEventArgs e)
         {
-            if (_sequenceIsDisplaying)
+            if (SequenceIsDisplaying)
             {
                 // do nothing
             }
@@ -430,14 +430,14 @@ namespace Simon
 
         private void yellowButton_MouseUp(object sender, MouseEventArgs e)
         {
-            if(!_sequenceIsDisplaying)
+            if (!SequenceIsDisplaying)
             {
                 TurnYellowLightOff();
 
                 // If the game is playing, red input will be tested against current sequence
-                if (_gameIsPlaying)
+                if (GameIsPlaying)
                 {
-                    CheckGameStatus(_currentGame.CheckUserInput(GameColor.Yellow));
+                    CheckGameStatus(CurrentGame.CheckUserInput(GameColor.Yellow));
                 }
             }
 
@@ -445,7 +445,7 @@ namespace Simon
 
         private void blueButton_MouseDown(object sender, MouseEventArgs e)
         {
-            if (_sequenceIsDisplaying)
+            if (SequenceIsDisplaying)
             {
                 // do nothing
             }
@@ -457,14 +457,14 @@ namespace Simon
 
         private void blueButton_MouseUp(object sender, MouseEventArgs e)
         {
-            if(!_sequenceIsDisplaying)
+            if (!SequenceIsDisplaying)
             {
                 TurnBlueLightOff();
 
                 // If the game is playing, blue input will be tested against current sequence
-                if (_gameIsPlaying)
+                if (GameIsPlaying)
                 {
-                    CheckGameStatus(_currentGame.CheckUserInput(GameColor.Blue));
+                    CheckGameStatus(CurrentGame.CheckUserInput(GameColor.Blue));
                 }
             }
 
@@ -479,11 +479,11 @@ namespace Simon
 
 
             // Create new game object to begin the game
-            _currentGame = new Game();
-            _gameIsPlaying = true;
+            CurrentGame = new Game();
+            GameIsPlaying = true;
             HandleNewRound();
-            //_currentGame.CreateNewRound();
-            //DisplaySequence(_currentGame.GetCurrentSequence());
+            //CurrentGame.CreateNewRound();
+            //DisplaySequence(CurrentGame.GetCurrentSequence());
 
         }
         #endregion
