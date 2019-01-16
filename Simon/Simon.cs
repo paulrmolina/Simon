@@ -15,12 +15,12 @@ namespace Simon
 {
     public partial class Simon : Form
     {
-        Game CurrentGame = null;                    // Holds the current playing game.
+        Game CurrentGame = null;            // Holds the current playing game.
         bool GameIsPlaying = false;         // Determines whether a game is currently being played
         bool SequenceIsDisplaying = false;  // Determines if sequence is being displayed to avoid erroneous inputs
         int CurrentRound = 0;               // Holds the current round the user is playing
         int HighestRound = 0;               // Holds high score
-        int TimeBetweenLights = 500;       // Determines the default time between light on/off in milliseconds
+        int TimeBetweenLights = 500;        // Determines the default time between light on/off in milliseconds
         int TimeBetweenRounds = 2000;       // Determines default time between rounds in milliseconds
 
         // For Sounds
@@ -94,7 +94,7 @@ namespace Simon
         /// <param name="sequence">the sequence to display</param>
         private void DisplaySequence(Queue<GameColor> sequence)
         {
-            this.SequenceIsDisplaying = true;
+            SequenceIsDisplaying = true;
             GameColor temp;
             while (sequence.Count != 0)
             {
@@ -140,7 +140,7 @@ namespace Simon
             }
             // Wait a second to avoid erroneous input between thread execution
             Wait(1);
-            this.SequenceIsDisplaying = false;
+            SequenceIsDisplaying = false;
         }
 
         /// <summary>
@@ -166,7 +166,7 @@ namespace Simon
             {
                 HighestRound = CurrentRound;
             }
-            highScore.Text = HighestRound.ToString();
+            highScore.Text = HighestRound.ToString("00");
 
             // Cleanup after game over
             CurrentRound = 0;
@@ -183,7 +183,7 @@ namespace Simon
             DisableAllLights();
 
             // Create new round
-            this.CurrentGame.CreateNewRound();
+            CurrentGame.CreateNewRound();
 
             // Graphics Update
             TurnAllLightsOff();
@@ -205,10 +205,13 @@ namespace Simon
             EnableAllLights();
         }
 
+        /// <summary>
+        /// Refreshes UI to ensure user knows which round they are on
+        /// </summary>
         private void RefreshCurrentRoundCount()
         {
             CurrentRound += 1;
-            currentScore.Text = CurrentRound.ToString();
+            currentScore.Text = CurrentRound.ToString("00");
         }
 
         /// <summary>
@@ -232,6 +235,9 @@ namespace Simon
             TurnBlueLightOff();
         }
 
+        /// <summary>
+        /// Turns all the lights on. Almost never used.
+        /// </summary>
         private void TurnAllLightsOn()
         {
             TurnGreenLightOn();
@@ -434,7 +440,7 @@ namespace Simon
             {
                 TurnYellowLightOff();
 
-                // If the game is playing, red input will be tested against current sequence
+                // If the game is playing, yellow input will be tested against current sequence
                 if (GameIsPlaying)
                 {
                     CheckGameStatus(CurrentGame.CheckUserInput(GameColor.Yellow));

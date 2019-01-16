@@ -9,12 +9,16 @@ namespace Simon
 {
     class Sequence
     {
-        Queue<GameColor> CurrentSequence = null;
-        int SequenceLength = 0;
+        Queue<GameColor> CurrentSequence = null;    // Holds the current sequence of colors for the round
+        int SequenceLength = 0;                     // Determines how many colors will be chosen
 
+        /// <summary>
+        /// Creates a sequence of a certain length.
+        /// </summary>
+        /// <param name="aSequenceLength">how long the sequence should be</param>
         public Sequence(int aSequenceLength)
         {
-            this.SequenceLength = aSequenceLength;
+            SequenceLength = aSequenceLength;
             CurrentSequence = new Queue<GameColor>();
             GenerateSequence();
         }
@@ -75,7 +79,7 @@ namespace Simon
         /// <returns>A copy of the current sequence.</returns>
         public Queue<GameColor> GetCurrentSequence()
         {
-            return new Queue<GameColor>(this.CurrentSequence);
+            return new Queue<GameColor>(CurrentSequence);
         }
     }
 }
