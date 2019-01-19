@@ -38,10 +38,10 @@ namespace Simon
 
             // Add all buttons to common array for easier handling
             ButtonArray = new Button[4];
-            ButtonArray[(int)GameColor.Green] = greenButton;
-            ButtonArray[(int)GameColor.Red] = redButton;
-            ButtonArray[(int)GameColor.Yellow] = yellowButton;
-            ButtonArray[(int)GameColor.Blue] = blueButton;
+            ButtonArray[(int)GameColor.Green] = btnGreenButton;
+            ButtonArray[(int)GameColor.Red] = btnRedButton;
+            ButtonArray[(int)GameColor.Yellow] = btnYellowButton;
+            ButtonArray[(int)GameColor.Blue] = btnBlueButton;
 
             // Set up sounds
             SoundPlayer = new SoundPlayer();
@@ -67,7 +67,7 @@ namespace Simon
                 case GameStatus.WON_ROUND:
                     //TurnAllLightsOff();
                     //this.Refresh();
-                    RefreshCurrentRoundCount();
+                    //RefreshCurrentRoundCount();
                     //Wait(TimeBetweenRounds);
                     HandleNewRound();
                     break;
@@ -166,12 +166,12 @@ namespace Simon
             {
                 HighestRound = CurrentRound;
             }
-            highScore.Text = HighestRound.ToString("00");
+            lblHighScore.Text = HighestRound.ToString("00");
 
             // Cleanup after game over
             CurrentRound = 0;
             GameIsPlaying = false;
-            startButton.Enabled = true;
+            btnStart.Enabled = true;
         }
 
         /// <summary>
@@ -186,6 +186,7 @@ namespace Simon
             CurrentGame.CreateNewRound();
 
             // Graphics Update
+            RefreshCurrentRoundCount();
             TurnAllLightsOff();
             this.Refresh();
 
@@ -211,7 +212,7 @@ namespace Simon
         private void RefreshCurrentRoundCount()
         {
             CurrentRound += 1;
-            currentScore.Text = CurrentRound.ToString("00");
+            lblCurrentScore.Text = CurrentRound.ToString("00");
         }
 
         /// <summary>
@@ -251,7 +252,7 @@ namespace Simon
         /// </summary>
         private void TurnBlueLightOff()
         {
-            blueButton.BackColor = Color.Navy;
+            btnBlueButton.BackColor = Color.Navy;
 
         }
 
@@ -267,7 +268,7 @@ namespace Simon
             SoundPlayer.Play();
 
             // Lights
-            blueButton.BackColor = Color.Blue;
+            btnBlueButton.BackColor = Color.Blue;
         }
 
         /// <summary>
@@ -275,7 +276,7 @@ namespace Simon
         /// </summary>
         private void TurnGreenLightOff()
         {
-            greenButton.BackColor = Color.DarkGreen;
+            btnGreenButton.BackColor = Color.DarkGreen;
         }
 
         /// <summary>
@@ -289,7 +290,7 @@ namespace Simon
             SoundPlayer.Stream = GreenSound;
             SoundPlayer.Play();
             // Lights
-            greenButton.BackColor = Color.Lime;
+            btnGreenButton.BackColor = Color.Lime;
         }
 
         /// <summary>
@@ -297,7 +298,7 @@ namespace Simon
         /// </summary>
         private void TurnRedLightOff()
         {
-            redButton.BackColor = Color.DarkRed;
+            btnRedButton.BackColor = Color.DarkRed;
 
 
         }
@@ -314,7 +315,7 @@ namespace Simon
             SoundPlayer.Play();
 
             // Lights
-            redButton.BackColor = Color.Red;
+            btnRedButton.BackColor = Color.Red;
         }
 
         /// <summary>
@@ -322,7 +323,7 @@ namespace Simon
         /// </summary>
         private void TurnYellowLightOff()
         {
-            yellowButton.BackColor = Color.Olive;
+            btnYellowButton.BackColor = Color.Olive;
         }
 
         /// <summary>
@@ -337,7 +338,7 @@ namespace Simon
             SoundPlayer.Play();
 
             // Lights
-            yellowButton.BackColor = Color.Yellow;
+            btnYellowButton.BackColor = Color.Yellow;
         }
         #endregion
 
@@ -479,10 +480,13 @@ namespace Simon
         private void startButton_Click(object sender, EventArgs e)
         {
             // Start button will be disabled until the user loses the game
-            startButton.Enabled = false;
+            btnStart.Enabled = false;
 
+            // Reset score in case the player is replaying
+           
             // TODO: Add Starting Sound
 
+            
 
             // Create new game object to begin the game
             CurrentGame = new Game();
